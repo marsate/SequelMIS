@@ -1,4 +1,3 @@
-require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
@@ -33,8 +32,10 @@ for (const file of eventFiles) {
   }
 }
 
-client.login(process.env.DISCORD_TOKEN).catch((err) => {
-  console.error('❌ Failed to login:', err);
-  process.exit(1);
-});
+client.login(process.env.DISCORD_TOKEN)
+  .then(() => console.log("🔗 Bot logged in"))
+  .catch((err) => {
+    console.error("❌ Failed to login:", err);
+    process.exit(1);
+  });
 
